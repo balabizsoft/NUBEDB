@@ -13,7 +13,7 @@ namespace TestApp02
         static nubev2Entities db = new nubev2Entities();
         static void Main(string[] args)
         {
-            MemberInitScanByBankCode(15);
+            MemberInitScanByBankCode(24);
         }
 
 
@@ -38,8 +38,9 @@ namespace TestApp02
         {
             try
             {
-                AppLib.WriteLogFileName = "NUBE_" + "MemberInitScanByBankCode";
 
+                AppLib.WriteLogFileName = "NUBE_" + "MemberInitScanByBankCode";
+                AppLib.WriteLogDT("START:");
                 AppLib.WriteLog("MemberInitScanByBankCode");
                 AppLib.WriteLog("------------------------");
                 AppLib.WriteLog("");
@@ -67,23 +68,59 @@ namespace TestApp02
 
                             foreach (var mm in mmList)
                             {
+                                Console.Clear();
+                                Console.WriteLine("Type Code : {0}", mType.Key);
+                                Console.WriteLine("Rejoin : {0}", mmList.Key);
+                                Console.WriteLine("Member Code: {0}", mm.MEMBER_CODE);
                                 var Status = mm.MemberMonthEndStatus;
                                 string statusMsg = "";
                                 if (mm.DATEOFJOINING >= new DateTime(2005, 9, 1))
                                 {
-                                    if (Status.SUBSCRIPTION_AMOUNT != 8 || Status.TOTALSUBCRP_AMOUNT != 8 || Status.ACCSUBSCRIPTION != 8 || Status.SUBSCRIPTIONDUE != 0)
+                                    if (Status.SUBSCRIPTION_AMOUNT != 8)
                                     {
-                                        statusMsg += "Subs Mismatch, ";
+                                        statusMsg += "SUBSCRIPTION_AMOUNT MISMATCH, ";
+                                    }
+                                    if (Status.TOTALSUBCRP_AMOUNT != 8)
+                                    {
+                                        statusMsg += "TOTALSUBCRP_AMOUNT MISMATCH, ";
+                                    }
+                                    if (Status.ACCSUBSCRIPTION != 8)
+                                    {
+                                        statusMsg += "ACCSUBSCRIPTION MISMATCH, ";
+                                    }
+                                    if (Status.SUBSCRIPTIONDUE != 0)
+                                    {
+                                        statusMsg += "SUBSCRIPTIONDUE MISMATCH, ";
                                     }
 
-                                    if (Status.BF_AMOUNT != 3 || Status.TOTALBF_AMOUNT != 3 || Status.ACCBF != 3 || Status.BFDUE != 0)
+                                    if (Status.BF_AMOUNT != 3)
                                     {
-                                        statusMsg += "BF Mismatch, ";
+                                        statusMsg += "BF_AMOUNT MISMATCH, ";
+                                    }
+                                    if (Status.TOTALBF_AMOUNT != 3)
+                                    {
+                                        statusMsg += "TOTALBF_AMOUNT MISMATCH, ";
+                                    }
+                                    if (Status.ACCBF != 3)
+                                    {
+                                        statusMsg += "ACCBF MISMATCH, ";
+                                    }
+                                    if (Status.BFDUE != 0)
+                                    {
+                                        statusMsg += "BFDUE MISMATCH, ";
                                     }
 
-                                    if (Status.TOTAL_MONTHS != 1 || Status.TOTALMONTHSPAID != 1 || Status.TOTALMONTHSDUE != 0)
+                                    if (Status.TOTAL_MONTHS != 1)
                                     {
-                                        statusMsg += "Total Month Mismatch, ";
+                                        statusMsg += "TOTAL_MONTHS MISMATCH, ";
+                                    }
+                                    if (Status.TOTALMONTHSPAID != 1)
+                                    {
+                                        statusMsg += "TOTALMONTHSPAID MISMATCH, ";
+                                    }
+                                    if (Status.TOTALMONTHSDUE != 0)
+                                    {
+                                        statusMsg += "TOTALMONTHSDUE MISMATCH, ";
                                     }
 
                                     if (Status.STATUS_CODE != 1 && Status.STATUS_CODE != 5)
@@ -123,9 +160,14 @@ namespace TestApp02
                                         statusMsg += "Total Month Mismatch, ";
                                     }
 
-                                    if (Status.ACCSUBSCRIPTION != (Status.SUBSCRIPTION_AMOUNT * Status.TOTALMONTHSPAID) || Status.SUBSCRIPTIONDUE != (Status.SUBSCRIPTION_AMOUNT * Status.TOTALMONTHSDUE))
+                                    if (Status.ACCSUBSCRIPTION != (Status.SUBSCRIPTION_AMOUNT * Status.TOTALMONTHSPAID))
                                     {
-                                        statusMsg += "Subs Mismatch, ";
+                                        statusMsg += "ACCSUBSCRIPTION MISMATCH, ";
+                                    }
+
+                                    if (Status.SUBSCRIPTIONDUE != (Status.SUBSCRIPTION_AMOUNT * Status.TOTALMONTHSDUE))
+                                    {
+                                        statusMsg += "SUBSCRIPTIONDUE MISMATCH, ";
                                     }
 
                                     if (Status.ACCBF != (Status.TOTALMONTHSPAID * 3) || Status.BFDUE != (Status.TOTALMONTHSDUE * 3))
@@ -160,7 +202,9 @@ namespace TestApp02
                 {
                     AppLib.WriteLog("Bank Code {0} is not found", BANK_CODE);
                 }
+                AppLib.WriteLogDT("END:");
             }
+
             catch(Exception ex) { AppLib.WriteLog(ex); }
            
 
