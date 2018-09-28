@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c2a4b238fd845008244ff2485d3456a" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="nubev2Model.MASTERMEMBER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nubev2Model.MemberMonthEndStatu" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="nubev2Model.FK_MemberMonthEndStatus_MASTERMEMBER" />
+        <EntityTypeShape EntityType="nubev2Model.MASTERBANK" Width="1.5" PointX="0.75" PointY="19.5" />
+        <AssociationConnector Association="nubev2Model.FK_MASTERMEMBER_MASTERBANK" />
+        <EntityTypeShape EntityType="nubev2Model.MemberMonthEndErrorLog" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
