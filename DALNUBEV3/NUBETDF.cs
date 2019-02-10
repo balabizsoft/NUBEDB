@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DALNUBEV2
+namespace DALNUBEV3
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class MemberMonthEndErrorLog
+    public partial class NUBETDF
     {
-        public long Id { get; set; }
-        public Nullable<decimal> Member_Code { get; set; }
-        public Nullable<int> YY { get; set; }
-        public Nullable<int> MM { get; set; }
-        public string ErrorMsg { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CompanyId { get; set; }
+    
+        public virtual CompanyDetail CompanyDetail { get; set; }
     }
 }

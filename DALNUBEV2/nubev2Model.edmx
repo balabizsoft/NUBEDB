@@ -16,6 +16,63 @@
           <Property Name="MERGED" Type="numeric" Precision="1" Scale="0" />
           <Property Name="HEADER_BANK_CODE" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="MASTERBANKBRANCH">
+          <Key>
+            <PropertyRef Name="BANKBRANCH_CODE" />
+          </Key>
+          <Property Name="BANKBRANCH_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BANK_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_USERCODE" Type="varchar" MaxLength="4" />
+          <Property Name="BANKBRANCH_ADDRESS1" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_ADDRESS2" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_ADDRESS3" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_CITY_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_STATE_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_COUNTRY" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_ZIPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_PHONE1" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_PHONE2" Type="varchar" MaxLength="50" />
+          <Property Name="BANKBRANCH_EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="NUBE_BRANCH_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="HEAD_QUARTERS" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="MERGED" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERCITY">
+          <Key>
+            <PropertyRef Name="CITY_CODE" />
+          </Key>
+          <Property Name="CITY_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="STATE_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERGUARDIAN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MEMBER_CODE" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ICNO_OLD" Type="varchar" MaxLength="20" />
+          <Property Name="ICNO_NEW" Type="varchar" MaxLength="20" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="SEX" Type="varchar" MaxLength="10" />
+          <Property Name="AGE" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="RELATION_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ADDRESS1" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS2" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS3" Type="varchar" MaxLength="50" />
+          <Property Name="CITY_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="STATE_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="50" />
+          <Property Name="ZIPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="50" />
+          <Property Name="USER_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="datetime" />
+          <Property Name="ENTRY_TIME" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="MASTERMEMBER">
           <Key>
             <PropertyRef Name="MEMBER_CODE" />
@@ -106,15 +163,72 @@
           <Property Name="GE_ContractNo" Type="varchar" MaxLength="50" />
           <Property Name="BranchMemberCode" Type="int" />
         </EntityType>
-        <EntityType Name="MemberMonthEndErrorLog">
+        <EntityType Name="MASTERNOMINEE">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Member_Code" Type="numeric" Precision="10" Scale="0" />
-          <Property Name="YY" Type="int" />
-          <Property Name="MM" Type="int" />
-          <Property Name="ErrorMsg" Type="varchar(max)" />
+          <Property Name="MEMBER_CODE" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ICNO_OLD" Type="varchar" MaxLength="20" />
+          <Property Name="ICNO_NEW" Type="varchar" MaxLength="20" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="SEX" Type="varchar" MaxLength="10" />
+          <Property Name="AGE" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="RELATION_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ADDRESS1" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS2" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS3" Type="varchar" MaxLength="50" />
+          <Property Name="CITY_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="STATE_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="50" />
+          <Property Name="ZIPCODE" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="50" />
+          <Property Name="USER_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="datetime" />
+          <Property Name="ENTRY_TIME" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MASTERNUBEBRANCH">
+          <Key>
+            <PropertyRef Name="NUBE_BRANCH_CODE" />
+          </Key>
+          <Property Name="NUBE_BRANCH_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUBE_BRANCH_USERCODE" Type="varchar" MaxLength="4" />
+          <Property Name="NUBE_BRANCH_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERRELATION">
+          <Key>
+            <PropertyRef Name="RELATION_CODE" />
+          </Key>
+          <Property Name="RELATION_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RELATION_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERRESIGNSTATUS">
+          <Key>
+            <PropertyRef Name="RESIGNSTATUS_CODE" />
+          </Key>
+          <Property Name="RESIGNSTATUS_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RESIGNSTATUS_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="RESIGNSTATUS_SHORTCODE" Type="varchar" MaxLength="10" />
+          <Property Name="RESIGNSTATUS_EXPELLED" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="IsBenefitValid" Type="bit" />
+          <Property Name="MinimumYear" Type="int" />
+          <Property Name="MinimumRefund" Type="int" />
+          <Property Name="MaximumRefund" Type="int" />
+          <Property Name="AmtPerYear1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="AmtPerYear2" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERSTATE">
+          <Key>
+            <PropertyRef Name="STATE_CODE" />
+          </Key>
+          <Property Name="STATE_CODE" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DELETED" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="Country" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="MemberMonthEndStatus">
           <Key>
@@ -152,6 +266,43 @@
           <Property Name="ENTRY_TIME" Type="varchar" MaxLength="5" />
           <Property Name="STRUCKOFF" Type="numeric" Precision="1" Scale="0" />
         </EntityType>
+        <EntityType Name="NameTitleSetup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RESIGNATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MEMBER_CODE" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="RESIGNATION_DATE" Type="datetime" />
+          <Property Name="RESIGNSTATUS_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ICNO" Type="varchar" MaxLength="20" />
+          <Property Name="ICNO_OLD" Type="varchar" MaxLength="20" />
+          <Property Name="RELATION_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="REASON_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="CLAIMER_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="MONTHS_CONTRIBUTED" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ACCBF" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ACCBENEFIT" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="CHEQUENO" Type="varchar" MaxLength="20" />
+          <Property Name="CHEQUEDATE" Type="datetime" />
+          <Property Name="AMOUNT" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTALARREARS" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="USER_CODE" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="datetime" />
+          <Property Name="ENTRY_TIME" Type="varchar" MaxLength="10" />
+          <Property Name="CURRENTDATE" Type="datetime" />
+          <Property Name="VOUCHER_DATE" Type="datetime" />
+          <Property Name="SERVICE_YEAR" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayMode" Type="varchar" MaxLength="50" />
+          <Property Name="InsuranceAmount" Type="money" />
+          <Property Name="UnionContribution" Type="money" />
+        </EntityType>
         <Association Name="FK_MASTERMEMBER_MASTERBANK">
           <End Role="MASTERBANK" Type="Self.MASTERBANK" Multiplicity="0..1" />
           <End Role="MASTERMEMBER" Type="Self.MASTERMEMBER" Multiplicity="*" />
@@ -161,6 +312,18 @@
             </Principal>
             <Dependent Role="MASTERMEMBER">
               <PropertyRef Name="BANK_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MASTERMEMBER_MASTERBANKBRANCH">
+          <End Role="MASTERBANKBRANCH" Type="Self.MASTERBANKBRANCH" Multiplicity="0..1" />
+          <End Role="MASTERMEMBER" Type="Self.MASTERMEMBER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERBANKBRANCH">
+              <PropertyRef Name="BANKBRANCH_CODE" />
+            </Principal>
+            <Dependent Role="MASTERMEMBER">
+              <PropertyRef Name="BRANCH_CODE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,11 +341,24 @@
         </Association>
         <EntityContainer Name="nubev2ModelStoreContainer">
           <EntitySet Name="MASTERBANK" EntityType="Self.MASTERBANK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERBANKBRANCH" EntityType="Self.MASTERBANKBRANCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERCITY" EntityType="Self.MASTERCITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERGUARDIAN" EntityType="Self.MASTERGUARDIAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MASTERMEMBER" EntityType="Self.MASTERMEMBER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MemberMonthEndErrorLog" EntityType="Self.MemberMonthEndErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERNOMINEE" EntityType="Self.MASTERNOMINEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERNUBEBRANCH" EntityType="Self.MASTERNUBEBRANCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERRELATION" EntityType="Self.MASTERRELATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERRESIGNSTATUS" EntityType="Self.MASTERRESIGNSTATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERSTATE" EntityType="Self.MASTERSTATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberMonthEndStatus" EntityType="Self.MemberMonthEndStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NameTitleSetup" EntityType="Self.NameTitleSetup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESIGNATION" EntityType="Self.RESIGNATION" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_MASTERMEMBER_MASTERBANK" Association="Self.FK_MASTERMEMBER_MASTERBANK">
             <End Role="MASTERBANK" EntitySet="MASTERBANK" />
+            <End Role="MASTERMEMBER" EntitySet="MASTERMEMBER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MASTERMEMBER_MASTERBANKBRANCH" Association="Self.FK_MASTERMEMBER_MASTERBANKBRANCH">
+            <End Role="MASTERBANKBRANCH" EntitySet="MASTERBANKBRANCH" />
             <End Role="MASTERMEMBER" EntitySet="MASTERMEMBER" />
           </AssociationSet>
           <AssociationSet Name="FK_MemberMonthEndStatus_MASTERMEMBER" Association="Self.FK_MemberMonthEndStatus_MASTERMEMBER">
@@ -285,6 +461,7 @@
           <Property Name="BranchMemberCode" Type="Int32" />
           <NavigationProperty Name="MemberMonthEndStatus" Relationship="nubev2Model.FK_MemberMonthEndStatus_MASTERMEMBER" FromRole="MASTERMEMBER" ToRole="MemberMonthEndStatu" />
           <NavigationProperty Name="MASTERBANK" Relationship="nubev2Model.FK_MASTERMEMBER_MASTERBANK" FromRole="MASTERMEMBER" ToRole="MASTERBANK" />
+          <NavigationProperty Name="MASTERBANKBRANCH" Relationship="nubev2Model.FK_MASTERMEMBER_MASTERBANKBRANCH" FromRole="MASTERMEMBER" ToRole="MASTERBANKBRANCH" />
         </EntityType>
         <EntityType Name="MemberMonthEndStatu">
           <Key>
@@ -335,7 +512,20 @@
             <End Role="MASTERBANK" EntitySet="MASTERBANKs" />
             <End Role="MASTERMEMBER" EntitySet="MASTERMEMBERs" />
           </AssociationSet>
-          <EntitySet Name="MemberMonthEndErrorLogs" EntityType="nubev2Model.MemberMonthEndErrorLog" />
+          <EntitySet Name="MASTERCITies" EntityType="nubev2Model.MASTERCITY" />
+          <EntitySet Name="MASTERSTATEs" EntityType="nubev2Model.MASTERSTATE" />
+          <EntitySet Name="MASTERBANKBRANCHes" EntityType="nubev2Model.MASTERBANKBRANCH" />
+          <EntitySet Name="MASTERNUBEBRANCHes" EntityType="nubev2Model.MASTERNUBEBRANCH" />
+          <AssociationSet Name="FK_MASTERMEMBER_MASTERBANKBRANCH" Association="nubev2Model.FK_MASTERMEMBER_MASTERBANKBRANCH">
+            <End Role="MASTERBANKBRANCH" EntitySet="MASTERBANKBRANCHes" />
+            <End Role="MASTERMEMBER" EntitySet="MASTERMEMBERs" />
+          </AssociationSet>
+          <EntitySet Name="MASTERRELATIONs" EntityType="nubev2Model.MASTERRELATION" />
+          <EntitySet Name="NameTitleSetups" EntityType="nubev2Model.NameTitleSetup" />
+          <EntitySet Name="MASTERGUARDIANs" EntityType="nubev2Model.MASTERGUARDIAN" />
+          <EntitySet Name="MASTERNOMINEEs" EntityType="nubev2Model.MASTERNOMINEE" />
+          <EntitySet Name="RESIGNATIONs" EntityType="nubev2Model.RESIGNATION" />
+          <EntitySet Name="MASTERRESIGNSTATUS" EntityType="nubev2Model.MASTERRESIGNSTATU" />
         </EntityContainer>
         <Association Name="FK_MemberMonthEndStatus_MASTERMEMBER">
           <End Type="nubev2Model.MASTERMEMBER" Role="MASTERMEMBER" Multiplicity="0..1" />
@@ -373,15 +563,179 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MemberMonthEndErrorLog">
+        <EntityType Name="MASTERCITY">
+          <Key>
+            <PropertyRef Name="CITY_CODE" />
+          </Key>
+          <Property Name="CITY_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATE_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERSTATE">
+          <Key>
+            <PropertyRef Name="STATE_CODE" />
+          </Key>
+          <Property Name="STATE_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="Country" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MASTERBANKBRANCH">
+          <Key>
+            <PropertyRef Name="BANKBRANCH_CODE" />
+          </Key>
+          <Property Name="BANKBRANCH_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BANK_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_USERCODE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_ADDRESS1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_ADDRESS2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_ADDRESS3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_CITY_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_STATE_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="BANKBRANCH_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_ZIPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_PHONE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_PHONE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANKBRANCH_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUBE_BRANCH_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="HEAD_QUARTERS" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="MERGED" Type="Decimal" Precision="1" Scale="0" />
+          <NavigationProperty Name="MASTERMEMBERs" Relationship="nubev2Model.FK_MASTERMEMBER_MASTERBANKBRANCH" FromRole="MASTERBANKBRANCH" ToRole="MASTERMEMBER" />
+        </EntityType>
+        <EntityType Name="MASTERNUBEBRANCH">
+          <Key>
+            <PropertyRef Name="NUBE_BRANCH_CODE" />
+          </Key>
+          <Property Name="NUBE_BRANCH_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUBE_BRANCH_USERCODE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NUBE_BRANCH_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <Association Name="FK_MASTERMEMBER_MASTERBANKBRANCH">
+          <End Type="nubev2Model.MASTERBANKBRANCH" Role="MASTERBANKBRANCH" Multiplicity="0..1" />
+          <End Type="nubev2Model.MASTERMEMBER" Role="MASTERMEMBER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERBANKBRANCH">
+              <PropertyRef Name="BANKBRANCH_CODE" />
+            </Principal>
+            <Dependent Role="MASTERMEMBER">
+              <PropertyRef Name="BRANCH_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MASTERRELATION">
+          <Key>
+            <PropertyRef Name="RELATION_CODE" />
+          </Key>
+          <Property Name="RELATION_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RELATION_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="NameTitleSetup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MASTERGUARDIAN">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Member_Code" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="YY" Type="Int32" />
-          <Property Name="MM" Type="Int32" />
-          <Property Name="ErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MEMBER_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="ICNO_OLD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ICNO_NEW" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="RELATION_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CITY_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="STATE_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZIPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ENTRY_TIME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="MASTERNOMINEE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MEMBER_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="ICNO_OLD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ICNO_NEW" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="RELATION_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CITY_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="STATE_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZIPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ENTRY_TIME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="RESIGNATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MEMBER_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="RESIGNATION_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RESIGNSTATUS_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ICNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ICNO_OLD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RELATION_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="REASON_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="CLAIMER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MONTHS_CONTRIBUTED" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ACCBF" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ACCBENEFIT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CHEQUENO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CHEQUEDATE" Type="DateTime" Precision="3" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTALARREARS" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="USER_CODE" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ENTRY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ENTRY_TIME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CURRENTDATE" Type="DateTime" Precision="3" />
+          <Property Name="VOUCHER_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SERVICE_YEAR" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsuranceAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnionContribution" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="MASTERRESIGNSTATU">
+          <Key>
+            <PropertyRef Name="RESIGNSTATUS_CODE" />
+          </Key>
+          <Property Name="RESIGNSTATUS_CODE" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RESIGNSTATUS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RESIGNSTATUS_SHORTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RESIGNSTATUS_EXPELLED" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="DELETED" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="IsBenefitValid" Type="Boolean" />
+          <Property Name="MinimumYear" Type="Int32" />
+          <Property Name="MinimumRefund" Type="Int32" />
+          <Property Name="MaximumRefund" Type="Int32" />
+          <Property Name="AmtPerYear1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AmtPerYear2" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -529,14 +883,174 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MemberMonthEndErrorLogs">
-            <EntityTypeMapping TypeName="nubev2Model.MemberMonthEndErrorLog">
-              <MappingFragment StoreEntitySet="MemberMonthEndErrorLog">
-                <ScalarProperty Name="ErrorMsg" ColumnName="ErrorMsg" />
-                <ScalarProperty Name="MM" ColumnName="MM" />
-                <ScalarProperty Name="YY" ColumnName="YY" />
-                <ScalarProperty Name="Member_Code" ColumnName="Member_Code" />
+          <EntitySetMapping Name="MASTERCITies">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERCITY">
+              <MappingFragment StoreEntitySet="MASTERCITY">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="STATE_CODE" ColumnName="STATE_CODE" />
+                <ScalarProperty Name="CITY_NAME" ColumnName="CITY_NAME" />
+                <ScalarProperty Name="CITY_CODE" ColumnName="CITY_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERSTATEs">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERSTATE">
+              <MappingFragment StoreEntitySet="MASTERSTATE">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="STATE_NAME" ColumnName="STATE_NAME" />
+                <ScalarProperty Name="STATE_CODE" ColumnName="STATE_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERBANKBRANCHes">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERBANKBRANCH">
+              <MappingFragment StoreEntitySet="MASTERBANKBRANCH">
+                <ScalarProperty Name="MERGED" ColumnName="MERGED" />
+                <ScalarProperty Name="HEAD_QUARTERS" ColumnName="HEAD_QUARTERS" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="NUBE_BRANCH_CODE" ColumnName="NUBE_BRANCH_CODE" />
+                <ScalarProperty Name="BANKBRANCH_EMAIL" ColumnName="BANKBRANCH_EMAIL" />
+                <ScalarProperty Name="BANKBRANCH_PHONE2" ColumnName="BANKBRANCH_PHONE2" />
+                <ScalarProperty Name="BANKBRANCH_PHONE1" ColumnName="BANKBRANCH_PHONE1" />
+                <ScalarProperty Name="BANKBRANCH_ZIPCODE" ColumnName="BANKBRANCH_ZIPCODE" />
+                <ScalarProperty Name="BANKBRANCH_COUNTRY" ColumnName="BANKBRANCH_COUNTRY" />
+                <ScalarProperty Name="BANKBRANCH_STATE_CODE" ColumnName="BANKBRANCH_STATE_CODE" />
+                <ScalarProperty Name="BANKBRANCH_CITY_CODE" ColumnName="BANKBRANCH_CITY_CODE" />
+                <ScalarProperty Name="BANKBRANCH_ADDRESS3" ColumnName="BANKBRANCH_ADDRESS3" />
+                <ScalarProperty Name="BANKBRANCH_ADDRESS2" ColumnName="BANKBRANCH_ADDRESS2" />
+                <ScalarProperty Name="BANKBRANCH_ADDRESS1" ColumnName="BANKBRANCH_ADDRESS1" />
+                <ScalarProperty Name="BANKBRANCH_USERCODE" ColumnName="BANKBRANCH_USERCODE" />
+                <ScalarProperty Name="BANKBRANCH_NAME" ColumnName="BANKBRANCH_NAME" />
+                <ScalarProperty Name="BANK_CODE" ColumnName="BANK_CODE" />
+                <ScalarProperty Name="BANKBRANCH_CODE" ColumnName="BANKBRANCH_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERNUBEBRANCHes">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERNUBEBRANCH">
+              <MappingFragment StoreEntitySet="MASTERNUBEBRANCH">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="NUBE_BRANCH_NAME" ColumnName="NUBE_BRANCH_NAME" />
+                <ScalarProperty Name="NUBE_BRANCH_USERCODE" ColumnName="NUBE_BRANCH_USERCODE" />
+                <ScalarProperty Name="NUBE_BRANCH_CODE" ColumnName="NUBE_BRANCH_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERRELATIONs">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERRELATION">
+              <MappingFragment StoreEntitySet="MASTERRELATION">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="RELATION_NAME" ColumnName="RELATION_NAME" />
+                <ScalarProperty Name="RELATION_CODE" ColumnName="RELATION_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NameTitleSetups">
+            <EntityTypeMapping TypeName="nubev2Model.NameTitleSetup">
+              <MappingFragment StoreEntitySet="NameTitleSetup">
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERGUARDIANs">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERGUARDIAN">
+              <MappingFragment StoreEntitySet="MASTERGUARDIAN">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="ENTRY_DATE" ColumnName="ENTRY_DATE" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="STATE_CODE" ColumnName="STATE_CODE" />
+                <ScalarProperty Name="CITY_CODE" ColumnName="CITY_CODE" />
+                <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="RELATION_CODE" ColumnName="RELATION_CODE" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ICNO_NEW" ColumnName="ICNO_NEW" />
+                <ScalarProperty Name="ICNO_OLD" ColumnName="ICNO_OLD" />
+                <ScalarProperty Name="MEMBER_CODE" ColumnName="MEMBER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERNOMINEEs">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERNOMINEE">
+              <MappingFragment StoreEntitySet="MASTERNOMINEE">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="ENTRY_DATE" ColumnName="ENTRY_DATE" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="STATE_CODE" ColumnName="STATE_CODE" />
+                <ScalarProperty Name="CITY_CODE" ColumnName="CITY_CODE" />
+                <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="RELATION_CODE" ColumnName="RELATION_CODE" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ICNO_NEW" ColumnName="ICNO_NEW" />
+                <ScalarProperty Name="ICNO_OLD" ColumnName="ICNO_OLD" />
+                <ScalarProperty Name="MEMBER_CODE" ColumnName="MEMBER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESIGNATIONs">
+            <EntityTypeMapping TypeName="nubev2Model.RESIGNATION">
+              <MappingFragment StoreEntitySet="RESIGNATION">
+                <ScalarProperty Name="UnionContribution" ColumnName="UnionContribution" />
+                <ScalarProperty Name="InsuranceAmount" ColumnName="InsuranceAmount" />
+                <ScalarProperty Name="PayMode" ColumnName="PayMode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SERVICE_YEAR" ColumnName="SERVICE_YEAR" />
+                <ScalarProperty Name="VOUCHER_DATE" ColumnName="VOUCHER_DATE" />
+                <ScalarProperty Name="CURRENTDATE" ColumnName="CURRENTDATE" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="ENTRY_DATE" ColumnName="ENTRY_DATE" />
+                <ScalarProperty Name="USER_CODE" ColumnName="USER_CODE" />
+                <ScalarProperty Name="TOTALARREARS" ColumnName="TOTALARREARS" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="CHEQUEDATE" ColumnName="CHEQUEDATE" />
+                <ScalarProperty Name="CHEQUENO" ColumnName="CHEQUENO" />
+                <ScalarProperty Name="ACCBENEFIT" ColumnName="ACCBENEFIT" />
+                <ScalarProperty Name="ACCBF" ColumnName="ACCBF" />
+                <ScalarProperty Name="MONTHS_CONTRIBUTED" ColumnName="MONTHS_CONTRIBUTED" />
+                <ScalarProperty Name="CLAIMER_NAME" ColumnName="CLAIMER_NAME" />
+                <ScalarProperty Name="REASON_CODE" ColumnName="REASON_CODE" />
+                <ScalarProperty Name="RELATION_CODE" ColumnName="RELATION_CODE" />
+                <ScalarProperty Name="ICNO_OLD" ColumnName="ICNO_OLD" />
+                <ScalarProperty Name="ICNO" ColumnName="ICNO" />
+                <ScalarProperty Name="RESIGNSTATUS_CODE" ColumnName="RESIGNSTATUS_CODE" />
+                <ScalarProperty Name="RESIGNATION_DATE" ColumnName="RESIGNATION_DATE" />
+                <ScalarProperty Name="MEMBER_CODE" ColumnName="MEMBER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERRESIGNSTATUS">
+            <EntityTypeMapping TypeName="nubev2Model.MASTERRESIGNSTATU">
+              <MappingFragment StoreEntitySet="MASTERRESIGNSTATUS">
+                <ScalarProperty Name="AmtPerYear2" ColumnName="AmtPerYear2" />
+                <ScalarProperty Name="AmtPerYear1" ColumnName="AmtPerYear1" />
+                <ScalarProperty Name="MaximumRefund" ColumnName="MaximumRefund" />
+                <ScalarProperty Name="MinimumRefund" ColumnName="MinimumRefund" />
+                <ScalarProperty Name="MinimumYear" ColumnName="MinimumYear" />
+                <ScalarProperty Name="IsBenefitValid" ColumnName="IsBenefitValid" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="RESIGNSTATUS_EXPELLED" ColumnName="RESIGNSTATUS_EXPELLED" />
+                <ScalarProperty Name="RESIGNSTATUS_SHORTCODE" ColumnName="RESIGNSTATUS_SHORTCODE" />
+                <ScalarProperty Name="RESIGNSTATUS_NAME" ColumnName="RESIGNSTATUS_NAME" />
+                <ScalarProperty Name="RESIGNSTATUS_CODE" ColumnName="RESIGNSTATUS_CODE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -28,6 +28,15 @@ namespace DALNUBEV2
         public virtual DbSet<MASTERMEMBER> MASTERMEMBERs { get; set; }
         public virtual DbSet<MemberMonthEndStatu> MemberMonthEndStatus { get; set; }
         public virtual DbSet<MASTERBANK> MASTERBANKs { get; set; }
-        public virtual DbSet<MemberMonthEndErrorLog> MemberMonthEndErrorLogs { get; set; }
+        public virtual DbSet<MASTERCITY> MASTERCITies { get; set; }
+        public virtual DbSet<MASTERSTATE> MASTERSTATEs { get; set; }
+        public virtual DbSet<MASTERBANKBRANCH> MASTERBANKBRANCHes { get; set; }
+        public virtual DbSet<MASTERNUBEBRANCH> MASTERNUBEBRANCHes { get; set; }
+        public virtual DbSet<MASTERRELATION> MASTERRELATIONs { get; set; }
+        public virtual DbSet<NameTitleSetup> NameTitleSetups { get; set; }
+        public virtual DbSet<MASTERGUARDIAN> MASTERGUARDIANs { get; set; }
+        public virtual DbSet<MASTERNOMINEE> MASTERNOMINEEs { get; set; }
+        public virtual DbSet<RESIGNATION> RESIGNATIONs { get; set; }
+        public virtual DbSet<MASTERRESIGNSTATU> MASTERRESIGNSTATUS { get; set; }
     }
 }

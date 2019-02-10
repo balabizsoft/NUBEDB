@@ -1,0 +1,2178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBNUBEMembership_3_0_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UnderGroupId" Type="int" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UnderCompanyId" Type="int" />
+          <Property Name="CompanyType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BankId" Type="int" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntryNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Particular" Type="nvarchar(max)" />
+          <Property Name="HQNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JournalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JournalId" Type="bigint" Nullable="false" />
+          <Property Name="LedgerId" Type="int" Nullable="false" />
+          <Property Name="DrAmt" Type="money" Nullable="false" />
+          <Property Name="CrAmt" Type="money" Nullable="false" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransactionMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="money" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="ClearDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PersonIncharge" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreditLimit" Type="smallint" />
+          <Property Name="CreditLimitTypeId" Type="int" />
+          <Property Name="CreditAmount" Type="float" />
+          <Property Name="OPDr" Type="money" />
+          <Property Name="OPCr" Type="money" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="AccountGroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBEBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnderBankId" Type="int" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="V2Code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBEBankBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="150" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="150" />
+          <Property Name="NUBEBankId" Type="int" />
+          <Property Name="NUBEBranchId" Type="int" />
+          <Property Name="V2Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsMerged" Type="bit" />
+          <Property Name="IsHeadQuarters" Type="bit" />
+        </EntityType>
+        <EntityType Name="NUBEBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="V2Code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBEGender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBELevy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBEMembership">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LedgerId" Type="int" Nullable="false" />
+          <Property Name="NUBEBankBranchId" Type="int" Nullable="false" />
+          <Property Name="NUBEMemberTypeId" Type="int" Nullable="false" />
+          <Property Name="NUBEPersonTitleId" Type="int" />
+          <Property Name="NUBEGenderId" Type="int" />
+          <Property Name="NUBERaceId" Type="int" />
+          <Property Name="NUBEStatusId" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="DOJ" Type="date" />
+          <Property Name="DOE" Type="date" />
+          <Property Name="DOL" Type="date" />
+          <Property Name="Rejoin" Type="bit" />
+          <Property Name="AI_Insurance" Type="bit" />
+          <Property Name="AI__InsuranceNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GE_Insurance" Type="bit" />
+          <Property Name="GE_ContractNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRIC_N" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRIC_O" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="money" />
+          <Property Name="NUBELevyId" Type="int" />
+          <Property Name="LevyAmount" Type="money" />
+          <Property Name="LevyPayDate" Type="date" />
+          <Property Name="NUBETDFId" Type="int" />
+          <Property Name="TDFAmount" Type="money" />
+          <Property Name="TDFPayDate" Type="date" />
+          <Property Name="V2Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBEMembershipGuardian">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUBEMembershipId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="150" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="150" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="150" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUBEGenderId" Type="int" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="150" />
+          <Property Name="NRIC_N" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRIC_O" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUBERelationId" Type="int" />
+        </EntityType>
+        <EntityType Name="NUBEMembershipNominee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUBEMembershipId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="150" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="150" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="150" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="150" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUBEGenderId" Type="int" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="150" />
+          <Property Name="NRIC_N" Type="nvarchar" MaxLength="50" />
+          <Property Name="NRIC_O" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUBERelationId" Type="int" />
+        </EntityType>
+        <EntityType Name="NUBEMembershipResignation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUBEMembershipId" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="NUBERelationId" Type="int" />
+          <Property Name="NUBEResignationReasonId" Type="int" />
+          <Property Name="ClaimerName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContributedMonth" Type="int" />
+          <Property Name="AccBF" Type="money" />
+          <Property Name="AccBenefit" Type="money" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="date" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="TotalArrear" Type="int" />
+          <Property Name="VoucherDate" Type="date" />
+          <Property Name="ServiceYear" Type="int" />
+          <Property Name="PayMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsuranceAmount" Type="money" />
+          <Property Name="UnionContribution" Type="money" />
+        </EntityType>
+        <EntityType Name="NUBEMemberType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBEPersonTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBERace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="V2Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBERelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="V2Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBEResignationReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="HasBenefit" Type="bit" />
+          <Property Name="MinimumYear" Type="int" />
+          <Property Name="MinimumRefund" Type="money" />
+          <Property Name="MaximumRefund" Type="money" />
+          <Property Name="BenefitAmountPerYear" Type="money" />
+          <Property Name="BenefitAmountTilMinimumYear" Type="money" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="V2Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NUBEStatusDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NUBETDF">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountGroup_AccountGroup">
+          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
+          <End Role="AccountGroup1" Type="Self.AccountGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountGroup1">
+              <PropertyRef Name="UnderGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountGroup_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountGroup">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyDetail_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="0..1" />
+          <End Role="CompanyDetail1" Type="Self.CompanyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyDetail1">
+              <PropertyRef Name="UnderCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetail_Journal">
+          <End Role="Journal" Type="Self.Journal" Multiplicity="1" />
+          <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Journal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="JournalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetail_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
+          <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ledger_AccountGroup">
+          <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="AccountGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBank_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEBank" Type="Self.NUBEBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBank">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBank_NUBEBank">
+          <End Role="NUBEBank" Type="Self.NUBEBank" Multiplicity="0..1" />
+          <End Role="NUBEBank1" Type="Self.NUBEBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBank1">
+              <PropertyRef Name="UnderBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBankBranch_NUBEBank">
+          <End Role="NUBEBank" Type="Self.NUBEBank" Multiplicity="0..1" />
+          <End Role="NUBEBankBranch" Type="Self.NUBEBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBankBranch">
+              <PropertyRef Name="NUBEBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBankBranch_NUBEBranch">
+          <End Role="NUBEBranch" Type="Self.NUBEBranch" Multiplicity="0..1" />
+          <End Role="NUBEBankBranch" Type="Self.NUBEBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBankBranch">
+              <PropertyRef Name="NUBEBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBranch_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEBranch" Type="Self.NUBEBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBranch">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEGender_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEGender" Type="Self.NUBEGender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEGender">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBELevy_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBELevy" Type="Self.NUBELevy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBELevy">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="1" />
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEMemberType">
+          <End Role="NUBEMemberType" Type="Self.NUBEMemberType" Multiplicity="1" />
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMemberType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEMemberTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEPersonTitle">
+          <End Role="NUBEPersonTitle" Type="Self.NUBEPersonTitle" Multiplicity="0..1" />
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEPersonTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEPersonTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEStatusId">
+          <End Role="NUBEStatusDetail" Type="Self.NUBEStatusDetail" Multiplicity="1" />
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEStatusDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipGuardian_NUBEGender">
+          <End Role="NUBEGender" Type="Self.NUBEGender" Multiplicity="0..1" />
+          <End Role="NUBEMembershipGuardian" Type="Self.NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEGender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBEGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipGuardian_NUBEMembership1">
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="0..1" />
+          <End Role="NUBEMembershipGuardian" Type="Self.NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipGuardian_NUBERelation">
+          <End Role="NUBERelation" Type="Self.NUBERelation" Multiplicity="0..1" />
+          <End Role="NUBEMembershipGuardian" Type="Self.NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipNominee_NUBEGender">
+          <End Role="NUBEGender" Type="Self.NUBEGender" Multiplicity="0..1" />
+          <End Role="NUBEMembershipNominee" Type="Self.NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEGender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBEGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipNominee_NUBEMembership">
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="0..1" />
+          <End Role="NUBEMembershipNominee" Type="Self.NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipNominee_NUBERelation">
+          <End Role="NUBERelation" Type="Self.NUBERelation" Multiplicity="0..1" />
+          <End Role="NUBEMembershipNominee" Type="Self.NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipResignation_NUBEMembership">
+          <End Role="NUBEMembership" Type="Self.NUBEMembership" Multiplicity="0..1" />
+          <End Role="NUBEMembershipResignation" Type="Self.NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipResignation_NUBERelation">
+          <End Role="NUBERelation" Type="Self.NUBERelation" Multiplicity="0..1" />
+          <End Role="NUBEMembershipResignation" Type="Self.NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipResignation_NUBEResignationReason">
+          <End Role="NUBEResignationReason" Type="Self.NUBEResignationReason" Multiplicity="0..1" />
+          <End Role="NUBEMembershipResignation" Type="Self.NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEResignationReason">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBEResignationReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMemberType_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEMemberType" Type="Self.NUBEMemberType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMemberType">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEPersonTitle_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEPersonTitle" Type="Self.NUBEPersonTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEPersonTitle">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBERace_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBERace" Type="Self.NUBERace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBERace">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBERelation_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBERelation" Type="Self.NUBERelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBERelation">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEResignationReason_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEResignationReason" Type="Self.NUBEResignationReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEResignationReason">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEStatusId_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBEStatusDetail" Type="Self.NUBEStatusDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEStatusDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBETDF_CompanyDetail">
+          <End Role="CompanyDetail" Type="Self.CompanyDetail" Multiplicity="1" />
+          <End Role="NUBETDF" Type="Self.NUBETDF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBETDF">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBNUBEMembership_3_0_1ModelStoreContainer">
+          <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyDetail" EntityType="Self.CompanyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalDetail" EntityType="Self.JournalDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEBank" EntityType="Self.NUBEBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEBankBranch" EntityType="Self.NUBEBankBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEBranch" EntityType="Self.NUBEBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEGender" EntityType="Self.NUBEGender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBELevy" EntityType="Self.NUBELevy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEMembership" EntityType="Self.NUBEMembership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEMembershipGuardian" EntityType="Self.NUBEMembershipGuardian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEMembershipNominee" EntityType="Self.NUBEMembershipNominee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEMembershipResignation" EntityType="Self.NUBEMembershipResignation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEMemberType" EntityType="Self.NUBEMemberType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEPersonTitle" EntityType="Self.NUBEPersonTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBERace" EntityType="Self.NUBERace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBERelation" EntityType="Self.NUBERelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEResignationReason" EntityType="Self.NUBEResignationReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBEStatusDetail" EntityType="Self.NUBEStatusDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NUBETDF" EntityType="Self.NUBETDF" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountGroup_AccountGroup" Association="Self.FK_AccountGroup_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroup" />
+            <End Role="AccountGroup1" EntitySet="AccountGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountGroup_CompanyDetail" Association="Self.FK_AccountGroup_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="AccountGroup" EntitySet="AccountGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDetail_CompanyDetail" Association="Self.FK_CompanyDetail_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="CompanyDetail1" EntitySet="CompanyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Journal" Association="Self.FK_JournalDetail_Journal">
+            <End Role="Journal" EntitySet="Journal" />
+            <End Role="JournalDetail" EntitySet="JournalDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Ledger" Association="Self.FK_JournalDetail_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="JournalDetail" EntitySet="JournalDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ledger_AccountGroup" Association="Self.FK_Ledger_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroup" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBank_CompanyDetail" Association="Self.FK_NUBEBank_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEBank" EntitySet="NUBEBank" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBank_NUBEBank" Association="Self.FK_NUBEBank_NUBEBank">
+            <End Role="NUBEBank" EntitySet="NUBEBank" />
+            <End Role="NUBEBank1" EntitySet="NUBEBank" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBankBranch_NUBEBank" Association="Self.FK_NUBEBankBranch_NUBEBank">
+            <End Role="NUBEBank" EntitySet="NUBEBank" />
+            <End Role="NUBEBankBranch" EntitySet="NUBEBankBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBankBranch_NUBEBranch" Association="Self.FK_NUBEBankBranch_NUBEBranch">
+            <End Role="NUBEBranch" EntitySet="NUBEBranch" />
+            <End Role="NUBEBankBranch" EntitySet="NUBEBankBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBranch_CompanyDetail" Association="Self.FK_NUBEBranch_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEBranch" EntitySet="NUBEBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEGender_CompanyDetail" Association="Self.FK_NUBEGender_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEGender" EntitySet="NUBEGender" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBELevy_CompanyDetail" Association="Self.FK_NUBELevy_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBELevy" EntitySet="NUBELevy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_Ledger" Association="Self.FK_NUBEMembership_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEMemberType" Association="Self.FK_NUBEMembership_NUBEMemberType">
+            <End Role="NUBEMemberType" EntitySet="NUBEMemberType" />
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEPersonTitle" Association="Self.FK_NUBEMembership_NUBEPersonTitle">
+            <End Role="NUBEPersonTitle" EntitySet="NUBEPersonTitle" />
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEStatusId" Association="Self.FK_NUBEMembership_NUBEStatusId">
+            <End Role="NUBEStatusDetail" EntitySet="NUBEStatusDetail" />
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBEGender" Association="Self.FK_NUBEMembershipGuardian_NUBEGender">
+            <End Role="NUBEGender" EntitySet="NUBEGender" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBEMembership1" Association="Self.FK_NUBEMembershipGuardian_NUBEMembership1">
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBERelation" Association="Self.FK_NUBEMembershipGuardian_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelation" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBEGender" Association="Self.FK_NUBEMembershipNominee_NUBEGender">
+            <End Role="NUBEGender" EntitySet="NUBEGender" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBEMembership" Association="Self.FK_NUBEMembershipNominee_NUBEMembership">
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBERelation" Association="Self.FK_NUBEMembershipNominee_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelation" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBEMembership" Association="Self.FK_NUBEMembershipResignation_NUBEMembership">
+            <End Role="NUBEMembership" EntitySet="NUBEMembership" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBERelation" Association="Self.FK_NUBEMembershipResignation_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelation" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBEResignationReason" Association="Self.FK_NUBEMembershipResignation_NUBEResignationReason">
+            <End Role="NUBEResignationReason" EntitySet="NUBEResignationReason" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMemberType_CompanyDetail" Association="Self.FK_NUBEMemberType_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEMemberType" EntitySet="NUBEMemberType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEPersonTitle_CompanyDetail" Association="Self.FK_NUBEPersonTitle_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEPersonTitle" EntitySet="NUBEPersonTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBERace_CompanyDetail" Association="Self.FK_NUBERace_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBERace" EntitySet="NUBERace" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBERelation_CompanyDetail" Association="Self.FK_NUBERelation_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBERelation" EntitySet="NUBERelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEResignationReason_CompanyDetail" Association="Self.FK_NUBEResignationReason_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEResignationReason" EntitySet="NUBEResignationReason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEStatusId_CompanyDetail" Association="Self.FK_NUBEStatusId_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBEStatusDetail" EntitySet="NUBEStatusDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBETDF_CompanyDetail" Association="Self.FK_NUBETDF_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetail" />
+            <End Role="NUBETDF" EntitySet="NUBETDF" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBNUBEMembership_3_0_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBNUBEMembership_3_0_1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyDetails" EntityType="DBNUBEMembership_3_0_1Model.CompanyDetail" />
+          <EntitySet Name="Journals" EntityType="DBNUBEMembership_3_0_1Model.Journal" />
+          <EntitySet Name="JournalDetails" EntityType="DBNUBEMembership_3_0_1Model.JournalDetail" />
+          <EntitySet Name="NUBEBanks" EntityType="DBNUBEMembership_3_0_1Model.NUBEBank" />
+          <EntitySet Name="NUBEBankBranches" EntityType="DBNUBEMembership_3_0_1Model.NUBEBankBranch" />
+          <EntitySet Name="NUBEBranches" EntityType="DBNUBEMembership_3_0_1Model.NUBEBranch" />
+          <EntitySet Name="NUBEGenders" EntityType="DBNUBEMembership_3_0_1Model.NUBEGender" />
+          <EntitySet Name="NUBELevies" EntityType="DBNUBEMembership_3_0_1Model.NUBELevy" />
+          <EntitySet Name="NUBEMemberships" EntityType="DBNUBEMembership_3_0_1Model.NUBEMembership" />
+          <EntitySet Name="NUBEMemberTypes" EntityType="DBNUBEMembership_3_0_1Model.NUBEMemberType" />
+          <EntitySet Name="NUBEPersonTitles" EntityType="DBNUBEMembership_3_0_1Model.NUBEPersonTitle" />
+          <EntitySet Name="NUBERaces" EntityType="DBNUBEMembership_3_0_1Model.NUBERace" />
+          <EntitySet Name="NUBERelations" EntityType="DBNUBEMembership_3_0_1Model.NUBERelation" />
+          <EntitySet Name="NUBEStatusDetails" EntityType="DBNUBEMembership_3_0_1Model.NUBEStatusDetail" />
+          <EntitySet Name="NUBETDFs" EntityType="DBNUBEMembership_3_0_1Model.NUBETDF" />
+          <AssociationSet Name="FK_CompanyDetail_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_CompanyDetail_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="CompanyDetail1" EntitySet="CompanyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBank_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEBank_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEBank" EntitySet="NUBEBanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBranch_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEBranch_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEBranch" EntitySet="NUBEBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEGender_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEGender_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEGender" EntitySet="NUBEGenders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBELevy_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBELevy_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBELevy" EntitySet="NUBELevies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMemberType_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMemberType_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEMemberType" EntitySet="NUBEMemberTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEPersonTitle_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEPersonTitle_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEPersonTitle" EntitySet="NUBEPersonTitles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBERelation_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBERelation_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBERelation" EntitySet="NUBERelations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEStatusId_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEStatusId_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEStatusDetail" EntitySet="NUBEStatusDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBETDF_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBETDF_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBETDF" EntitySet="NUBETDFs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Journal" Association="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Journal">
+            <End Role="Journal" EntitySet="Journals" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBank_NUBEBank" Association="DBNUBEMembership_3_0_1Model.FK_NUBEBank_NUBEBank">
+            <End Role="NUBEBank" EntitySet="NUBEBanks" />
+            <End Role="NUBEBank1" EntitySet="NUBEBanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBankBranch_NUBEBank" Association="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBank">
+            <End Role="NUBEBank" EntitySet="NUBEBanks" />
+            <End Role="NUBEBankBranch" EntitySet="NUBEBankBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEBankBranch_NUBEBranch" Association="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBranch">
+            <End Role="NUBEBranch" EntitySet="NUBEBranches" />
+            <End Role="NUBEBankBranch" EntitySet="NUBEBankBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEMemberType" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEMemberType">
+            <End Role="NUBEMemberType" EntitySet="NUBEMemberTypes" />
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEPersonTitle" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEPersonTitle">
+            <End Role="NUBEPersonTitle" EntitySet="NUBEPersonTitles" />
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_NUBEStatusId" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEStatusId">
+            <End Role="NUBEStatusDetail" EntitySet="NUBEStatusDetails" />
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBERace_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBERace_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBERace" EntitySet="NUBERaces" />
+          </AssociationSet>
+          <EntitySet Name="NUBEMembershipNominees" EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee" />
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBEGender" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEGender">
+            <End Role="NUBEGender" EntitySet="NUBEGenders" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBEMembership" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEMembership">
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipNominee_NUBERelation" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelations" />
+            <End Role="NUBEMembershipNominee" EntitySet="NUBEMembershipNominees" />
+          </AssociationSet>
+          <EntitySet Name="AccountGroups" EntityType="DBNUBEMembership_3_0_1Model.AccountGroup" />
+          <AssociationSet Name="FK_AccountGroup_AccountGroup" Association="DBNUBEMembership_3_0_1Model.FK_AccountGroup_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="AccountGroup1" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountGroup_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_AccountGroup_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <EntitySet Name="NUBEMembershipGuardians" EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian" />
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBEGender" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEGender">
+            <End Role="NUBEGender" EntitySet="NUBEGenders" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBEMembership1" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEMembership1">
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipGuardian_NUBERelation" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelations" />
+            <End Role="NUBEMembershipGuardian" EntitySet="NUBEMembershipGuardians" />
+          </AssociationSet>
+          <EntitySet Name="Ledgers" EntityType="DBNUBEMembership_3_0_1Model.Ledger" />
+          <AssociationSet Name="FK_Ledger_AccountGroup" Association="DBNUBEMembership_3_0_1Model.FK_Ledger_AccountGroup">
+            <End Role="AccountGroup" EntitySet="AccountGroups" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JournalDetail_Ledger" Association="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="JournalDetail" EntitySet="JournalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembership_Ledger" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+          </AssociationSet>
+          <EntitySet Name="NUBEResignationReasons" EntityType="DBNUBEMembership_3_0_1Model.NUBEResignationReason" />
+          <AssociationSet Name="FK_NUBEResignationReason_CompanyDetail" Association="DBNUBEMembership_3_0_1Model.FK_NUBEResignationReason_CompanyDetail">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="NUBEResignationReason" EntitySet="NUBEResignationReasons" />
+          </AssociationSet>
+          <EntitySet Name="NUBEMembershipResignations" EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation" />
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBEMembership" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEMembership">
+            <End Role="NUBEMembership" EntitySet="NUBEMemberships" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBERelation" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBERelation">
+            <End Role="NUBERelation" EntitySet="NUBERelations" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NUBEMembershipResignation_NUBEResignationReason" Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEResignationReason">
+            <End Role="NUBEResignationReason" EntitySet="NUBEResignationReasons" />
+            <End Role="NUBEMembershipResignation" EntitySet="NUBEMembershipResignations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UnderCompanyId" Type="Int32" />
+          <Property Name="CompanyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankId" Type="Int32" />
+          <NavigationProperty Name="CompanyDetail1" Relationship="DBNUBEMembership_3_0_1Model.FK_CompanyDetail_CompanyDetail" FromRole="CompanyDetail" ToRole="CompanyDetail1" />
+          <NavigationProperty Name="CompanyDetail2" Relationship="DBNUBEMembership_3_0_1Model.FK_CompanyDetail_CompanyDetail" FromRole="CompanyDetail1" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEBanks" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBank_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEBank" />
+          <NavigationProperty Name="NUBEBranches" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBranch_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEBranch" />
+          <NavigationProperty Name="NUBEGenders" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEGender_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEGender" />
+          <NavigationProperty Name="NUBELevies" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBELevy_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBELevy" />
+          <NavigationProperty Name="NUBEMemberTypes" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMemberType_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEMemberType" />
+          <NavigationProperty Name="NUBEPersonTitles" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEPersonTitle_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEPersonTitle" />
+          <NavigationProperty Name="NUBERelations" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBERelation_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBERelation" />
+          <NavigationProperty Name="NUBEStatusDetails" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEStatusId_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEStatusDetail" />
+          <NavigationProperty Name="NUBETDFs" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBETDF_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBETDF" />
+          <NavigationProperty Name="NUBERaces" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBERace_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBERace" />
+          <NavigationProperty Name="AccountGroups" Relationship="DBNUBEMembership_3_0_1Model.FK_AccountGroup_CompanyDetail" FromRole="CompanyDetail" ToRole="AccountGroup" />
+          <NavigationProperty Name="NUBEResignationReasons" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEResignationReason_CompanyDetail" FromRole="CompanyDetail" ToRole="NUBEResignationReason" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntryNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Particular" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HQNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JournalDetails" Relationship="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Journal" FromRole="Journal" ToRole="JournalDetail" />
+        </EntityType>
+        <EntityType Name="JournalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JournalId" Type="Int64" Nullable="false" />
+          <Property Name="LedgerId" Type="Int32" Nullable="false" />
+          <Property Name="DrAmt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CrAmt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="ClearDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Journal" Relationship="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Journal" FromRole="JournalDetail" ToRole="Journal" />
+          <NavigationProperty Name="Ledger" Relationship="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Ledger" FromRole="JournalDetail" ToRole="Ledger" />
+        </EntityType>
+        <EntityType Name="NUBEBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnderBankId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBank_CompanyDetail" FromRole="NUBEBank" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEBank1" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBank_NUBEBank" FromRole="NUBEBank" ToRole="NUBEBank1" />
+          <NavigationProperty Name="NUBEBank2" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBank_NUBEBank" FromRole="NUBEBank1" ToRole="NUBEBank" />
+          <NavigationProperty Name="NUBEBankBranches" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBank" FromRole="NUBEBank" ToRole="NUBEBankBranch" />
+        </EntityType>
+        <EntityType Name="NUBEBankBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NUBEBankId" Type="Int32" />
+          <Property Name="NUBEBranchId" Type="Int32" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsMerged" Type="Boolean" />
+          <Property Name="IsHeadQuarters" Type="Boolean" />
+          <NavigationProperty Name="NUBEBank" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBank" FromRole="NUBEBankBranch" ToRole="NUBEBank" />
+          <NavigationProperty Name="NUBEBranch" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBranch" FromRole="NUBEBankBranch" ToRole="NUBEBranch" />
+        </EntityType>
+        <EntityType Name="NUBEBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBranch_CompanyDetail" FromRole="NUBEBranch" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEBankBranches" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBranch" FromRole="NUBEBranch" ToRole="NUBEBankBranch" />
+        </EntityType>
+        <EntityType Name="NUBEGender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEGender_CompanyDetail" FromRole="NUBEGender" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMembershipNominees" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEGender" FromRole="NUBEGender" ToRole="NUBEMembershipNominee" />
+          <NavigationProperty Name="NUBEMembershipGuardians" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEGender" FromRole="NUBEGender" ToRole="NUBEMembershipGuardian" />
+        </EntityType>
+        <EntityType Name="NUBELevy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBELevy_CompanyDetail" FromRole="NUBELevy" ToRole="CompanyDetail" />
+        </EntityType>
+        <EntityType Name="NUBEMembership">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LedgerId" Type="Int32" Nullable="false" />
+          <Property Name="NUBEBankBranchId" Type="Int32" Nullable="false" />
+          <Property Name="NUBEMemberTypeId" Type="Int32" Nullable="false" />
+          <Property Name="NUBEPersonTitleId" Type="Int32" />
+          <Property Name="NUBEGenderId" Type="Int32" />
+          <Property Name="NUBERaceId" Type="Int32" />
+          <Property Name="NUBEStatusId" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="DOJ" Type="DateTime" Precision="0" />
+          <Property Name="DOE" Type="DateTime" Precision="0" />
+          <Property Name="DOL" Type="DateTime" Precision="0" />
+          <Property Name="Rejoin" Type="Boolean" />
+          <Property Name="AI_Insurance" Type="Boolean" />
+          <Property Name="AI__InsuranceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GE_Insurance" Type="Boolean" />
+          <Property Name="GE_ContractNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_N" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_O" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NUBELevyId" Type="Int32" />
+          <Property Name="LevyAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LevyPayDate" Type="DateTime" Precision="0" />
+          <Property Name="NUBETDFId" Type="Int32" />
+          <Property Name="TDFAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TDFPayDate" Type="DateTime" Precision="0" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NUBEMemberType" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEMemberType" FromRole="NUBEMembership" ToRole="NUBEMemberType" />
+          <NavigationProperty Name="NUBEPersonTitle" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEPersonTitle" FromRole="NUBEMembership" ToRole="NUBEPersonTitle" />
+          <NavigationProperty Name="NUBEStatusDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEStatusId" FromRole="NUBEMembership" ToRole="NUBEStatusDetail" />
+          <NavigationProperty Name="NUBEMembershipNominees" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEMembership" FromRole="NUBEMembership" ToRole="NUBEMembershipNominee" />
+          <NavigationProperty Name="NUBEMembershipGuardians" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEMembership1" FromRole="NUBEMembership" ToRole="NUBEMembershipGuardian" />
+          <NavigationProperty Name="Ledger" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_Ledger" FromRole="NUBEMembership" ToRole="Ledger" />
+          <NavigationProperty Name="NUBEMembershipResignations" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEMembership" FromRole="NUBEMembership" ToRole="NUBEMembershipResignation" />
+        </EntityType>
+        <EntityType Name="NUBEMemberType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMemberType_CompanyDetail" FromRole="NUBEMemberType" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMemberships" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEMemberType" FromRole="NUBEMemberType" ToRole="NUBEMembership" />
+        </EntityType>
+        <EntityType Name="NUBEPersonTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEPersonTitle_CompanyDetail" FromRole="NUBEPersonTitle" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMemberships" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEPersonTitle" FromRole="NUBEPersonTitle" ToRole="NUBEMembership" />
+        </EntityType>
+        <EntityType Name="NUBERace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBERace_CompanyDetail" FromRole="NUBERace" ToRole="CompanyDetail" />
+        </EntityType>
+        <EntityType Name="NUBERelation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBERelation_CompanyDetail" FromRole="NUBERelation" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMembershipNominees" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBERelation" FromRole="NUBERelation" ToRole="NUBEMembershipNominee" />
+          <NavigationProperty Name="NUBEMembershipGuardians" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBERelation" FromRole="NUBERelation" ToRole="NUBEMembershipGuardian" />
+          <NavigationProperty Name="NUBEMembershipResignations" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBERelation" FromRole="NUBERelation" ToRole="NUBEMembershipResignation" />
+        </EntityType>
+        <EntityType Name="NUBEStatusDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEStatusId_CompanyDetail" FromRole="NUBEStatusDetail" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMemberships" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEStatusId" FromRole="NUBEStatusDetail" ToRole="NUBEMembership" />
+        </EntityType>
+        <EntityType Name="NUBETDF">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBETDF_CompanyDetail" FromRole="NUBETDF" ToRole="CompanyDetail" />
+        </EntityType>
+        <Association Name="FK_CompanyDetail_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyDetail1">
+              <PropertyRef Name="UnderCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBank_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBank" Role="NUBEBank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBank">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBranch_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBranch" Role="NUBEBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBranch">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEGender_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEGender" Role="NUBEGender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEGender">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBELevy_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBELevy" Role="NUBELevy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBELevy">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMemberType_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMemberType" Role="NUBEMemberType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMemberType">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEPersonTitle_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEPersonTitle" Role="NUBEPersonTitle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEPersonTitle">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBERelation_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBERelation" Role="NUBERelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBERelation">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEStatusId_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEStatusDetail" Role="NUBEStatusDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEStatusDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBETDF_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBETDF" Role="NUBETDF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBETDF">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetail_Journal">
+          <End Type="DBNUBEMembership_3_0_1Model.Journal" Role="Journal" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Journal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="JournalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBank_NUBEBank">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBank" Role="NUBEBank" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBank" Role="NUBEBank1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBank1">
+              <PropertyRef Name="UnderBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBankBranch_NUBEBank">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBank" Role="NUBEBank" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBankBranch" Role="NUBEBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBankBranch">
+              <PropertyRef Name="NUBEBankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEBankBranch_NUBEBranch">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBranch" Role="NUBEBranch" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEBankBranch" Role="NUBEBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEBankBranch">
+              <PropertyRef Name="NUBEBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEMemberType">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMemberType" Role="NUBEMemberType" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMemberType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEMemberTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEPersonTitle">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEPersonTitle" Role="NUBEPersonTitle" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEPersonTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEPersonTitleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_NUBEStatusId">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEStatusDetail" Role="NUBEStatusDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEStatusDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="NUBEStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBERace_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBERace" Role="NUBERace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBERace">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NUBEMembershipNominee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUBEMembershipId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUBEGenderId" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_N" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_O" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUBERelationId" Type="Int32" />
+          <NavigationProperty Name="NUBEGender" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEGender" FromRole="NUBEMembershipNominee" ToRole="NUBEGender" />
+          <NavigationProperty Name="NUBEMembership" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEMembership" FromRole="NUBEMembershipNominee" ToRole="NUBEMembership" />
+          <NavigationProperty Name="NUBERelation" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBERelation" FromRole="NUBEMembershipNominee" ToRole="NUBERelation" />
+        </EntityType>
+        <Association Name="FK_NUBEMembershipNominee_NUBEGender">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEGender" Role="NUBEGender" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee" Role="NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEGender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBEGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipNominee_NUBEMembership">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee" Role="NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipNominee_NUBERelation">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBERelation" Role="NUBERelation" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee" Role="NUBEMembershipNominee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipNominee">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UnderGroupId" Type="Int32" />
+          <Property Name="GroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountGroup1" Relationship="DBNUBEMembership_3_0_1Model.FK_AccountGroup_AccountGroup" FromRole="AccountGroup" ToRole="AccountGroup1" />
+          <NavigationProperty Name="AccountGroup2" Relationship="DBNUBEMembership_3_0_1Model.FK_AccountGroup_AccountGroup" FromRole="AccountGroup1" ToRole="AccountGroup" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_AccountGroup_CompanyDetail" FromRole="AccountGroup" ToRole="CompanyDetail" />
+          <NavigationProperty Name="Ledgers" Relationship="DBNUBEMembership_3_0_1Model.FK_Ledger_AccountGroup" FromRole="AccountGroup" ToRole="Ledger" />
+        </EntityType>
+        <Association Name="FK_AccountGroup_AccountGroup">
+          <End Type="DBNUBEMembership_3_0_1Model.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.AccountGroup" Role="AccountGroup1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountGroup1">
+              <PropertyRef Name="UnderGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountGroup_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.AccountGroup" Role="AccountGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountGroup">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NUBEMembershipGuardian">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUBEMembershipId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUBEGenderId" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_N" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NRIC_O" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUBERelationId" Type="Int32" />
+          <NavigationProperty Name="NUBEGender" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEGender" FromRole="NUBEMembershipGuardian" ToRole="NUBEGender" />
+          <NavigationProperty Name="NUBEMembership" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEMembership1" FromRole="NUBEMembershipGuardian" ToRole="NUBEMembership" />
+          <NavigationProperty Name="NUBERelation" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBERelation" FromRole="NUBEMembershipGuardian" ToRole="NUBERelation" />
+        </EntityType>
+        <Association Name="FK_NUBEMembershipGuardian_NUBEGender">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEGender" Role="NUBEGender" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian" Role="NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEGender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBEGenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipGuardian_NUBEMembership1">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian" Role="NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipGuardian_NUBERelation">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBERelation" Role="NUBERelation" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian" Role="NUBEMembershipGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipGuardian">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LedgerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonIncharge" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GSTNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Int16" />
+          <Property Name="CreditLimitTypeId" Type="Int32" />
+          <Property Name="CreditAmount" Type="Double" />
+          <Property Name="OPDr" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OPCr" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LedgerCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccountGroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountGroup" Relationship="DBNUBEMembership_3_0_1Model.FK_Ledger_AccountGroup" FromRole="Ledger" ToRole="AccountGroup" />
+          <NavigationProperty Name="JournalDetails" Relationship="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Ledger" FromRole="Ledger" ToRole="JournalDetail" />
+          <NavigationProperty Name="NUBEMemberships" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_Ledger" FromRole="Ledger" ToRole="NUBEMembership" />
+        </EntityType>
+        <Association Name="FK_Ledger_AccountGroup">
+          <End Type="DBNUBEMembership_3_0_1Model.AccountGroup" Role="AccountGroup" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.Ledger" Role="Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="AccountGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JournalDetail_Ledger">
+          <End Type="DBNUBEMembership_3_0_1Model.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.JournalDetail" Role="JournalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JournalDetail">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembership_Ledger">
+          <End Type="DBNUBEMembership_3_0_1Model.Ledger" Role="Ledger" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembership">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NUBEResignationReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasBenefit" Type="Boolean" />
+          <Property Name="MinimumYear" Type="Int32" />
+          <Property Name="MinimumRefund" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaximumRefund" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BenefitAmountPerYear" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BenefitAmountTilMinimumYear" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="V2Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyDetail" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEResignationReason_CompanyDetail" FromRole="NUBEResignationReason" ToRole="CompanyDetail" />
+          <NavigationProperty Name="NUBEMembershipResignations" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEResignationReason" FromRole="NUBEResignationReason" ToRole="NUBEMembershipResignation" />
+        </EntityType>
+        <Association Name="FK_NUBEResignationReason_CompanyDetail">
+          <End Type="DBNUBEMembership_3_0_1Model.CompanyDetail" Role="CompanyDetail" Multiplicity="1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEResignationReason" Role="NUBEResignationReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEResignationReason">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NUBEMembershipResignation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUBEMembershipId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="NUBERelationId" Type="Int32" />
+          <Property Name="NUBEResignationReasonId" Type="Int32" />
+          <Property Name="ClaimerName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContributedMonth" Type="Int32" />
+          <Property Name="AccBF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AccBenefit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalArrear" Type="Int32" />
+          <Property Name="VoucherDate" Type="DateTime" Precision="0" />
+          <Property Name="ServiceYear" Type="Int32" />
+          <Property Name="PayMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnionContribution" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="NUBEMembership" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEMembership" FromRole="NUBEMembershipResignation" ToRole="NUBEMembership" />
+          <NavigationProperty Name="NUBERelation" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBERelation" FromRole="NUBEMembershipResignation" ToRole="NUBERelation" />
+          <NavigationProperty Name="NUBEResignationReason" Relationship="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEResignationReason" FromRole="NUBEMembershipResignation" ToRole="NUBEResignationReason" />
+        </EntityType>
+        <Association Name="FK_NUBEMembershipResignation_NUBEMembership">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembership" Role="NUBEMembership" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation" Role="NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEMembership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBEMembershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipResignation_NUBERelation">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBERelation" Role="NUBERelation" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation" Role="NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBERelation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBERelationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NUBEMembershipResignation_NUBEResignationReason">
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEResignationReason" Role="NUBEResignationReason" Multiplicity="0..1" />
+          <End Type="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation" Role="NUBEMembershipResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NUBEResignationReason">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NUBEMembershipResignation">
+              <PropertyRef Name="NUBEResignationReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBNUBEMembership_3_0_1ModelStoreContainer" CdmEntityContainer="DBNUBEMembership_3_0_1Entities">
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetail">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="UnderCompanyId" ColumnName="UnderCompanyId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="HQNo" ColumnName="HQNo" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalDetails">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.JournalDetail">
+              <MappingFragment StoreEntitySet="JournalDetail">
+                <ScalarProperty Name="ClearDate" ColumnName="ClearDate" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="TransactionMode" ColumnName="TransactionMode" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEBanks">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEBank">
+              <MappingFragment StoreEntitySet="NUBEBank">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UnderBankId" ColumnName="UnderBankId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEBankBranches">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEBankBranch">
+              <MappingFragment StoreEntitySet="NUBEBankBranch">
+                <ScalarProperty Name="IsHeadQuarters" ColumnName="IsHeadQuarters" />
+                <ScalarProperty Name="IsMerged" ColumnName="IsMerged" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="NUBEBranchId" ColumnName="NUBEBranchId" />
+                <ScalarProperty Name="NUBEBankId" ColumnName="NUBEBankId" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEBranches">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEBranch">
+              <MappingFragment StoreEntitySet="NUBEBranch">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEGenders">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEGender">
+              <MappingFragment StoreEntitySet="NUBEGender">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBELevies">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBELevy">
+              <MappingFragment StoreEntitySet="NUBELevy">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEMemberships">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEMembership">
+              <MappingFragment StoreEntitySet="NUBEMembership">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="TDFPayDate" ColumnName="TDFPayDate" />
+                <ScalarProperty Name="TDFAmount" ColumnName="TDFAmount" />
+                <ScalarProperty Name="NUBETDFId" ColumnName="NUBETDFId" />
+                <ScalarProperty Name="LevyPayDate" ColumnName="LevyPayDate" />
+                <ScalarProperty Name="LevyAmount" ColumnName="LevyAmount" />
+                <ScalarProperty Name="NUBELevyId" ColumnName="NUBELevyId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="NRIC_O" ColumnName="NRIC_O" />
+                <ScalarProperty Name="NRIC_N" ColumnName="NRIC_N" />
+                <ScalarProperty Name="GE_ContractNo" ColumnName="GE_ContractNo" />
+                <ScalarProperty Name="GE_Insurance" ColumnName="GE_Insurance" />
+                <ScalarProperty Name="AI__InsuranceNo" ColumnName="AI__InsuranceNo" />
+                <ScalarProperty Name="AI_Insurance" ColumnName="AI_Insurance" />
+                <ScalarProperty Name="Rejoin" ColumnName="Rejoin" />
+                <ScalarProperty Name="DOL" ColumnName="DOL" />
+                <ScalarProperty Name="DOE" ColumnName="DOE" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="NUBEStatusId" ColumnName="NUBEStatusId" />
+                <ScalarProperty Name="NUBERaceId" ColumnName="NUBERaceId" />
+                <ScalarProperty Name="NUBEGenderId" ColumnName="NUBEGenderId" />
+                <ScalarProperty Name="NUBEPersonTitleId" ColumnName="NUBEPersonTitleId" />
+                <ScalarProperty Name="NUBEMemberTypeId" ColumnName="NUBEMemberTypeId" />
+                <ScalarProperty Name="NUBEBankBranchId" ColumnName="NUBEBankBranchId" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEMemberTypes">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEMemberType">
+              <MappingFragment StoreEntitySet="NUBEMemberType">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEPersonTitles">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEPersonTitle">
+              <MappingFragment StoreEntitySet="NUBEPersonTitle">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBERaces">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBERace">
+              <MappingFragment StoreEntitySet="NUBERace">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBERelations">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBERelation">
+              <MappingFragment StoreEntitySet="NUBERelation">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEStatusDetails">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEStatusDetail">
+              <MappingFragment StoreEntitySet="NUBEStatusDetail">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBETDFs">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBETDF">
+              <MappingFragment StoreEntitySet="NUBETDF">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEMembershipNominees">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee">
+              <MappingFragment StoreEntitySet="NUBEMembershipNominee">
+                <ScalarProperty Name="NUBERelationId" ColumnName="NUBERelationId" />
+                <ScalarProperty Name="NRIC_O" ColumnName="NRIC_O" />
+                <ScalarProperty Name="NRIC_N" ColumnName="NRIC_N" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="NUBEGenderId" ColumnName="NUBEGenderId" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NUBEMembershipId" ColumnName="NUBEMembershipId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroup">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="UnderGroupId" ColumnName="UnderGroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEMembershipGuardians">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian">
+              <MappingFragment StoreEntitySet="NUBEMembershipGuardian">
+                <ScalarProperty Name="NUBERelationId" ColumnName="NUBERelationId" />
+                <ScalarProperty Name="NRIC_O" ColumnName="NRIC_O" />
+                <ScalarProperty Name="NRIC_N" ColumnName="NRIC_N" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="NUBEGenderId" ColumnName="NUBEGenderId" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NUBEMembershipId" ColumnName="NUBEMembershipId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="OPCr" ColumnName="OPCr" />
+                <ScalarProperty Name="OPDr" ColumnName="OPDr" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="CreditLimitTypeId" ColumnName="CreditLimitTypeId" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="PersonIncharge" ColumnName="PersonIncharge" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEResignationReasons">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEResignationReason">
+              <MappingFragment StoreEntitySet="NUBEResignationReason">
+                <ScalarProperty Name="V2Code" ColumnName="V2Code" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="BenefitAmountTilMinimumYear" ColumnName="BenefitAmountTilMinimumYear" />
+                <ScalarProperty Name="BenefitAmountPerYear" ColumnName="BenefitAmountPerYear" />
+                <ScalarProperty Name="MaximumRefund" ColumnName="MaximumRefund" />
+                <ScalarProperty Name="MinimumRefund" ColumnName="MinimumRefund" />
+                <ScalarProperty Name="MinimumYear" ColumnName="MinimumYear" />
+                <ScalarProperty Name="HasBenefit" ColumnName="HasBenefit" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUBEMembershipResignations">
+            <EntityTypeMapping TypeName="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation">
+              <MappingFragment StoreEntitySet="NUBEMembershipResignation">
+                <ScalarProperty Name="UnionContribution" ColumnName="UnionContribution" />
+                <ScalarProperty Name="InsuranceAmount" ColumnName="InsuranceAmount" />
+                <ScalarProperty Name="PayMode" ColumnName="PayMode" />
+                <ScalarProperty Name="ServiceYear" ColumnName="ServiceYear" />
+                <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+                <ScalarProperty Name="TotalArrear" ColumnName="TotalArrear" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="AccBenefit" ColumnName="AccBenefit" />
+                <ScalarProperty Name="AccBF" ColumnName="AccBF" />
+                <ScalarProperty Name="ContributedMonth" ColumnName="ContributedMonth" />
+                <ScalarProperty Name="ClaimerName" ColumnName="ClaimerName" />
+                <ScalarProperty Name="NUBEResignationReasonId" ColumnName="NUBEResignationReasonId" />
+                <ScalarProperty Name="NUBERelationId" ColumnName="NUBERelationId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="NUBEMembershipId" ColumnName="NUBEMembershipId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

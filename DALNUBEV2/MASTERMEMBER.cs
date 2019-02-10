@@ -109,5 +109,6 @@ namespace DALNUBEV2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MemberMonthEndStatu> MemberMonthEndStatus { get; set; }
         public virtual MASTERBANK MASTERBANK { get; set; }
+        public virtual MASTERBANKBRANCH MASTERBANKBRANCH { get; set; }
     }
 }

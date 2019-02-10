@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="852753ccd5dc4696b937d43ce059d195" Name="Diagram1">
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.CompanyDetail" Width="1.5" PointX="0.75" PointY="20.375" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.Journal" Width="1.5" PointX="3" PointY="43.875" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.JournalDetail" Width="1.5" PointX="5.25" PointY="38.375" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEBank" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEBankBranch" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEBranch" Width="1.5" PointX="3" PointY="23" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEGender" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBELevy" Width="1.5" PointX="3" PointY="20.375" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEMembership" Width="1.5" PointX="5.25" PointY="26.625" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEMemberType" Width="1.5" PointX="3" PointY="31.125" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEPersonTitle" Width="1.5" PointX="3" PointY="25.875" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBERace" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBERelation" Width="1.5" PointX="3" PointY="33.875" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEStatusDetail" Width="1.5" PointX="3" PointY="17.5" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBETDF" Width="1.5" PointX="3" PointY="28.625" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_CompanyDetail_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEBank_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEBranch_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEGender_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBELevy_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMemberType_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEPersonTitle_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBERelation_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEStatusId_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBETDF_CompanyDetail" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Journal" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEBank_NUBEBank" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBank" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEBankBranch_NUBEBranch" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEMemberType" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEPersonTitle" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_NUBEStatusId" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBERace_CompanyDetail" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipNominee" Width="1.5" PointX="7.5" PointY="21.125" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEGender" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBEMembership" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipNominee_NUBERelation" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.AccountGroup" Width="1.5" PointX="3" PointY="37.25" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_AccountGroup_AccountGroup" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_AccountGroup_CompanyDetail" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipGuardian" Width="1.5" PointX="10.5" PointY="23.125" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEGender" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBEMembership1" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipGuardian_NUBERelation" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.Ledger" Width="1.5" PointX="5.25" PointY="43.875" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_Ledger_AccountGroup" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_JournalDetail_Ledger" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembership_Ledger" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEResignationReason" Width="1.5" PointX="3" PointY="6.125" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEResignationReason_CompanyDetail" />
+        <EntityTypeShape EntityType="DBNUBEMembership_3_0_1Model.NUBEMembershipResignation" Width="1.5" PointX="10.5" PointY="16.75" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEMembership" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBERelation" />
+        <AssociationConnector Association="DBNUBEMembership_3_0_1Model.FK_NUBEMembershipResignation_NUBEResignationReason" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

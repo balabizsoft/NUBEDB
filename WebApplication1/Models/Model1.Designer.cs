@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Bala\NUBEDB\DALNUBEV2\nubev2Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\nube_bala\Documents\Visual Studio 2015\Projects\NUBEDB\WebApplication1\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

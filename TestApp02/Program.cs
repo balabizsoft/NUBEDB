@@ -174,17 +174,17 @@ namespace TestApp02
 
                         if (!string.IsNullOrWhiteSpace(statusMsg))
                         {
-                            try
-                            {
-                                MemberMonthEndErrorLog d = new MemberMonthEndErrorLog()
-                                {
-                                    Member_Code = mm.MEMBER_CODE,
-                                    YY = mm.DATEOFJOINING.Value.Year,
-                                    MM = mm.DATEOFJOINING.Value.Month,
-                                    ErrorMsg = "Member_Init" + statusMsg
-                                };
-                            }
-                            catch (Exception ex) { AppLib.WriteLog(ex); }
+                            //try
+                            //{
+                            //    MemberMonthEndErrorLog d = new MemberMonthEndErrorLog()
+                            //    {
+                            //        Member_Code = mm.MEMBER_CODE,
+                            //        YY = mm.DATEOFJOINING.Value.Year,
+                            //        MM = mm.DATEOFJOINING.Value.Month,
+                            //        ErrorMsg = "Member_Init" + statusMsg
+                            //    };
+                            //}
+                            //catch (Exception ex) { AppLib.WriteLog(ex); }
                             statusMsg = " Error=> " + statusMsg;
                         }
 
